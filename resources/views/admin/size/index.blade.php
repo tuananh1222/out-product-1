@@ -1,11 +1,24 @@
 @extends('admin.app')
 @section('index')
     <section class="content-header">
-        <h1>{{ $tab }}</h1>
-        <div class="timeline-footer general">
-            <a href="{{ route('sizes.create') }}" class="btn btn-primary btn general">
-                <i class="fa fa-plus-square general"></i> Thêm mới
-            </a>
+        <h1>{{ $tab }}</h1>       
+        <div class="row">
+            <div class="timeline-footer general col-md-3" style="padding-left: 10px">
+                <a href="{{ route('sizes.create') }}" class="btn btn-primary btn general">
+                    <i class="fa fa-plus-square general"></i> Thêm mới
+                </a>
+            </div>
+            <div class="col-md-9 ">
+                <form action="" method="get">
+                    <div class="input-group col-3">                   
+                        <input type="text" class="form-control"
+                                placeholder="Search" aria-label="Search" 
+                                style="margin-left: 400px; width: 300px"
+                                name="keyword" id="keyword">
+                        <input type="submit" class="btn btn-submit" />
+                    </div>              
+                </form>
+            </div>
         </div>
         @if (session()->has('messageSuccess'))
             <div class="col-md-3 infoMessage">

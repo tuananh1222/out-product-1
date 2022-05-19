@@ -2,6 +2,17 @@
 @section('index')
     <section class="content-header">
         <h1>{{ $tab }}</h1>
+        <div class="row">
+            <div class="col-md-9">
+                <form action="" method="get">
+                    <div class="input-group col-3">   
+                        <input type="text" id="keyword" name="keyword" class="form-control"                        
+                                style="margin-left: 400px; width: 300px">                                    
+                        <input type="submit" class="btn btn-submit" />
+                    </div>              
+                </form>
+            </div>
+        </div>        
         @if (session()->has('messageSuccess'))
             <div class="col-md-3 infoMessage">
                 <div class="box box-warning box-solid">
@@ -47,13 +58,14 @@
                                         <th>Thông báo</th>
                                         <th>Chi tiết</th>
                                         <th>Tùy chọn</th>
+                                        <th>Ngày đặt</th>
                                     </tr>
                                     @foreach ($orders as $order)
                                         <tr>
                                             <td>{{ $order->id }}</td>
                                             <td>{{ $order->user->name }}</td>
                                             <td>{{ $order->user->phone }}</td>
-                                            <td>
+                                            <td >
                                                 @php
                                                     if ($order->status == 0) {
                                                         echo '<span class="label label-primary">Đã xác nhận</span>';
@@ -65,6 +77,12 @@
 
                                                     if ($order->status == 2) {
                                                         echo '<span class="label label-success">Đã thanh toán</span>';
+                                                    }
+                                                    if ($order->status == 3) {
+                                                        echo '<span class="label label-default">Bị hủy hàng</span>';
+                                                    }
+                                                    if ($order->status == 4) {
+                                                        echo '<span class="label label-warning">Bị trả hàng</span>';
                                                     }
                                                 @endphp
                                             </td>
@@ -90,6 +108,7 @@
                                                     </button>
                                                 </form>
                                             </td>
+                                            <td>{{date($order->created_at)}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

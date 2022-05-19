@@ -12,11 +12,15 @@ class CategoryController extends Controller
 {
     protected $paginate = 15;
     
-    public function index()
+    public function index(Request $request)
     {
         $tab = "Quản lý danh mục";
+        $searchKey = null;
         $categories = Category::where('parent_id', 0)->orderBydesc('created_at')->paginate($this->paginate);
-        
+        if(!empty($request->keyword)){
+            $searchKey = $request->keyword;
+            $categories = Category::where('name', 'like', '%'.$searchKey .'%')->where('parent_id', 0)->orderBydesc('created_at')->paginate($this->paginate);
+        }         
         return view('admin.category.index', compact([
             "tab",
             "categories",

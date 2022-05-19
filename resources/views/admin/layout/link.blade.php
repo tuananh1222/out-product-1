@@ -33,9 +33,12 @@
       $( "#datepicker2" ).datepicker({
         dateFormat:"yy-mm-dd"
       });
-        });
+      $( "#keyword" ).datepicker({
+        dateFormat:"yy-mm-dd"
+      });
+    });
     
-    </script>
+</script>
 <style>
     .main-header .logo {
         background: linear-gradient(264deg, #007eeade, #3dae3f) !important;

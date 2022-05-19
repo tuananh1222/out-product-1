@@ -47,22 +47,29 @@
                             <form action="{{ route('orders.update', $order->id) }}" method="POST" class="noPrint">
                                 @method("PUT")
                                 @csrf
-                                <button type="submit" class="btn btn-danger">
-                                    <b>
-                                        @php
-                                            if ($order->status == 0) {
-                                                echo 'Cập nhật đã thanh toán';
-                                            }
+                                <select 
+                                    style="height:33px"
+                                    class="select" 
+                                    aria-label="Default select example" 
+                                    value=@php
+                                        if ($order->status == 0) {
+                                            echo 'Đã thanh toán';
+                                        }
 
-                                            if ($order->status == 1) {
-                                                echo 'Cập nhật đã xác nhận';
-                                            }
+                                        if ($order->status == 1) {
+                                            echo 'Đã xác nhận';
+                                        }
 
-                                            if ($order->status == 2) {
-                                                echo 'Cập nhật chưa xác nhận';
-                                            }
-                                        @endphp
-                                    </b>
+                                        if ($order->status == 2) {
+                                            echo 'Chưa xác nhận';
+                                        }
+                                    @endphp
+                                    name="status">                                   
+                                    <option class="dropdown-item" value="0">Đã xác nhận</option>
+                                    <option class="dropdown-item" value="1">Chưa xác nhận</option>
+                                    <option class="dropdown-item" value="2">Đã thanh toán</option>
+                                  </select>
+                                <button type="submit" class="btn btn-danger">Update                                    
                                 </button>
                             </form>
                             

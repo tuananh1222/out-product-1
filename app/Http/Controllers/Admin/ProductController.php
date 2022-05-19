@@ -16,11 +16,15 @@ class ProductController extends Controller
 {
     protected $paginate = 8;
     
-    public function index()
+    public function index(Request $request)
     {
         $tab = "Quản lý sản phẩm";
+        $searchKey = null;        
         $products = Product::orderBydesc('created_at')->paginate($this->paginate);
-        
+        if(!empty($request->keyword)){
+            $searchKey = $request->keyword;
+            $products = Product::where('name', 'like', '%'.$searchKey .'%')->orderBydesc('created_at')->paginate($this->paginate);
+        }   
         return view('admin.product.index', compact([
             "tab",
             "products",

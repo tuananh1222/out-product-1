@@ -11,11 +11,15 @@ class SizeController extends Controller
 {
     protected $paginate = 15;
     
-    public function index()
+    public function index(Request $request)
     {
         $tab = "Quản lý tình trạng";
+        $searchKey = null;
         $sizes = Size::orderBydesc('created_at')->paginate($this->paginate);
-        
+        if(!empty($request->keyword)){
+            $searchKey = $request->keyword;
+            $sizes = Size::where('name', 'like', '%'.$searchKey .'%')->orderBydesc('created_at')->paginate($this->paginate);
+        }   
         return view('admin.size.index', compact([
             "tab",
             "sizes",

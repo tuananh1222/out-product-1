@@ -11,11 +11,15 @@ class UserController extends Controller
 {
     protected $paginate = 15;
     
-    public function index()
+    public function index(Request $request)
     {
         $tab = "Quản lý người dùng";
+        $searchKey=null;
         $users = User::orderBydesc('created_at')->paginate($this->paginate);
-        
+        if(!empty($request->keyword)){
+            $searchKey = $request->keyword;
+            $users = User::where('name', 'like', '%'.$searchKey .'%')->orderBydesc('created_at')->paginate($this->paginate);
+        }   
         return view('admin.user.index', compact([
             "tab",
             "users",

@@ -6,16 +6,24 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\User;
+use DB;
 // use App\Http\Requests\OrderRequest;
 
 class OrderController extends Controller
 {
     protected $paginate = 15;
     
-    public function index()
-    {
+    public function index(Request $request)
+    {    
         $tab = "Quản lý đơn hàng";
-        $orders = Order::orderBydesc('created_at')->paginate($this->paginate);
+        $searchKey = null;
+        $orders = Order::orderBy('status')->paginate($this->paginate);      
+        if(!empty($request->keyword)){
+            $searchKey = $request->keyword;                   
+            $orders = Order::where(Order::raw('date(created_at)') ,$searchKey)->orderBy('status')->paginate($this->paginate);        
+          ;
+        }  
         
         return view('admin.order.index', compact([
             "tab",
@@ -46,26 +54,8 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
 
-        switch ($order->status) {
-            case 0: {
-                $status = 2;
-
-                break;
-            }
-            case 1: {
-                $status = 0;
-
-                break;
-            }
-            case 2: {
-                $status = 1;
-
-                break;
-            }
-        }
-
         $order->update([
-            'status' => $status
+            'status' => $request->status
         ]);
 
         return redirect()->route('orders.show', $id)->with('messageSuccess', 'Cập nhật đơn hàng thành công');
