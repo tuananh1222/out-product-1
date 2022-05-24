@@ -108,7 +108,7 @@
     </div>
 </div>
 
-<div class="logo-carousel-section">
+{{-- <div class="logo-carousel-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -132,7 +132,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection
 

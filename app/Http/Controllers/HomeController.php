@@ -98,7 +98,7 @@ class HomeController extends Controller
     {
         $childCategory = Category::findOrFail($childCategoryId);
         $products = Product::where('category_id', $childCategory->id)->whereStatus(1)->orderByDesc('created_at')->paginate(config('app.my_paginate'));
-        $title = $childCategory;
+        $title = $childCategory->name;
         return view('client.product.list', compact([
             'products', 'title'
         ]));

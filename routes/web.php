@@ -87,5 +87,6 @@ Route::group([
 ], function() {
     Route::post('logout', [HomeController::class, 'logout'])->name('logout-client');
     Route::get('order', [CartController::class, 'getOrder'])->name('user-order');
+    Route::post('destroy', [CartController::class, 'destroyOrder']);
     Route::get('order-detail/{orderId}', [CartController::class, 'getOrderDetail'])->name('user-order-detail');
 });

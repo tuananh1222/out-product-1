@@ -17,6 +17,7 @@
                                     <th class="product-name text-center">Trạng thái</th>
                                     <th class="product-price text-center">Chi tiết</th>
                                     <th class="product-quantity text-center">Ngày đặt</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,16 +39,24 @@
                                                 if ($order->status == 2) {
                                                     echo '<span class="label label-success">Đã thanh toán</span>';
                                                 }
+                                                if ($order->status == 3) {
+                                                    echo '<span class="label label-success">Đã hủy hàng</span>';
+                                                }
+                                                if ($order->status == 4) {
+                                                    echo '<span class="label label-success">Đã trả hàng</span>';
+                                                }
                                             @endphp
                                         </td>
                                         <td class="product-remove">
-                                            <a href="{{ route('user-order-detail', $order->id) }}" class="remove-cart" style="color: black; text-decoration: underline">
+                                            <a href="{{ route('user-order-detail', $order->id) }}" class="remove-cart btn btn-primary" style="color: black; text-decoration: underline">
                                                 Xem
-                                            </a>
+                                            </a>                                         
+                                                  
                                         </td>
                                         <td class="product-quantity">
                                             {{ date('d/m/Y H:i:m', strtotime($order->created_at)) }}
                                         </td>
+                                        
                                     </tr>
                                 @endforeach
                             </tbody>

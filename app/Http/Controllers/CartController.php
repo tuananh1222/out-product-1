@@ -291,4 +291,20 @@ class CartController extends Controller
             ]));
         }
     }
+    public function destroyOrder(Request $request)
+    {
+        $data = $request->all();
+        $order = Order::findOrFail($data['id']);
+        $order->update([
+            'status' => 3,
+        ]);
+        $orderDetail = OrderDetail::where('order_id', $data['id'])->get();
+        foreach($orderDetail as $item){
+            $productSize = ProductSize::findOrFail($item['product_size_id']);
+            $qlty = $productSize->quantity + $item['quantity'];
+            $productSize->update([
+                'quantity' => $qlty,
+            ]);
+        }
+    }
 }

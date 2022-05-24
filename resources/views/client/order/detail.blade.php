@@ -18,7 +18,7 @@
                                     <th class="product-price text-center">Tình trạng</th>
                                     <th class="product-quantity text-center">SL</th>
                                     <th class="product-quantity text-center">Giá</th>
-                                </tr>
+                                 </tr>
                             </thead>
                             <tbody>
                                 @php
@@ -48,6 +48,41 @@
                                     <td></td>
                                     <td><b>{{ number_format($total) }}đ</b></td>
                                 </tr>
+                                <tr>
+                                   
+                                    <td>
+                                        <div class="modal fade" id="exampleModal" role="dialog" >
+                                            <div class="modal-dialog" >
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                                                    &times;
+                                                </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <textarea name="lydo" id="lydo" rows="3" 
+                                                                 placeholder="Nhập lý do hủy...."
+                                                                 style="width:100%"></textarea>
+                                                    
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                <button type="button" class="btn btn-primary" id="{{$item->order_id}}"
+                                                    onclick="Huydonhang(this.id)">Gửi</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    @if ($item->order->status !=3)
+                                        <p>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                                Hủy đơn hàng
+                                            </button>
+                                        </p>
+                                    @endif
+                                    </td>
+                                </tr>                                
                             </tbody>
                         </table>
                     </div>

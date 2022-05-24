@@ -44,27 +44,37 @@
                             {{ $order->note }}
                             <br>
                             <br>
+                            @if ($order->status <2)                                
+                           
                             <form action="{{ route('orders.update', $order->id) }}" method="POST" class="noPrint">
                                 @method("PUT")
                                 @csrf
                                 <select 
                                     style="height:33px"
                                     class="select" 
-                                    aria-label="Default select example" 
-                                    value=@php
-                                        if ($order->status == 0) {
-                                            echo 'Đã thanh toán';
-                                        }
+                                    aria-label="Default select example"                                   
+                                    name="status">     
+                                    <option selected>
+                                        @php
+                                            if ($order->status == 0) {
+                                                echo '<span class="label label-primary">Đã xác nhận</span>';
+                                            }
 
-                                        if ($order->status == 1) {
-                                            echo 'Đã xác nhận';
-                                        }
+                                            if ($order->status == 1) {
+                                                echo '<span class="label label-danger">Chưa xác nhận</span>';
+                                            }
 
-                                        if ($order->status == 2) {
-                                            echo 'Chưa xác nhận';
-                                        }
-                                    @endphp
-                                    name="status">                                   
+                                            if ($order->status == 2) {
+                                                echo '<span class="label label-success">Đã thanh toán</span>';
+                                            }
+                                            if ($order->status == 3) {
+                                                echo '<span class="label label-default">Bị hủy hàng</span>';
+                                            }
+                                            if ($order->status == 4) {
+                                                echo '<span class="label label-warning">Bị trả hàng</span>';
+                                            }
+                                        @endphp
+                                    </option>                              
                                     <option class="dropdown-item" value="0">Đã xác nhận</option>
                                     <option class="dropdown-item" value="1">Chưa xác nhận</option>
                                     <option class="dropdown-item" value="2">Đã thanh toán</option>
@@ -72,7 +82,7 @@
                                 <button type="submit" class="btn btn-danger">Update                                    
                                 </button>
                             </form>
-                            
+                            @endif
                             <br>
                             <button class="btn btn-primary noPrint" onclick="window.print();">
                                 <b>In hóa đơn</b>
@@ -106,6 +116,12 @@
 
                                                     if ($order->status == 2) {
                                                         echo '<span class="label label-success">Đã thanh toán</span>';
+                                                    }
+                                                    if ($order->status == 3) {
+                                                        echo '<span class="label label-default">Đã hủy hàng</span>';
+                                                    }
+                                                    if ($order->status == 4) {
+                                                        echo '<span class="label label-danger">Đã hoàn trả hàng</span>';
                                                     }
                                                 @endphp
                                             </b>

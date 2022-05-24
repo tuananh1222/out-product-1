@@ -33,7 +33,7 @@
       $( "#datepicker2" ).datepicker({
         dateFormat:"yy-mm-dd"
       });
-      $( "#keyword" ).datepicker({
+      $( "#keyword1" ).datepicker({
         dateFormat:"yy-mm-dd"
       });
     });

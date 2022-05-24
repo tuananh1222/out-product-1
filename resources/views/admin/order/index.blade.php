@@ -3,12 +3,22 @@
     <section class="content-header">
         <h1>{{ $tab }}</h1>
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <form action="" method="get">
-                    <div class="input-group col-3">   
-                        <input type="text" id="keyword" name="keyword" class="form-control"                        
-                                style="margin-left: 400px; width: 300px">                                    
-                        <input type="submit" class="btn btn-submit" />
+                    <div class="input-group col-12">   
+                          <select 
+                            style="height:33px"
+                            class="form-select col-3" 
+                            aria-label="Default select example"                             
+                            name="status">                                   
+                            <option class="dropdown-item" value="0">Đã xác nhận</option>
+                            <option class="dropdown-item" value="1">Chưa xác nhận</option>
+                            <option class="dropdown-item" value="2">Đã thanh toán</option>
+                        </select>
+                        <input type="text" id="keyword1" name="keyword" class="form-control col-3"                        
+                                style="margin-left: 400px; width: 300px">  
+                                                        
+                        <input type="submit" class="btn btn-primary" />
                     </div>              
                 </form>
             </div>

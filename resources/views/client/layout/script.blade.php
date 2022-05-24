@@ -23,3 +23,24 @@
 <script>
     $('.infoMessage').delay(4000).slideUp();
 </script>
+<script>
+    function Huydonhang(id){
+        var _token = $('input[name="_token"]').val();
+        var id = id;
+        var lydohuydon = $('#lydo').val();
+        var url = window.location.origin;     
+        $.ajax({
+				url: url + '/destroy',
+				method:"POST",				
+				data:{
+                    id:id,
+                    lydo:lydohuydon, 
+                    _token:_token,
+                },
+				success: function(data){					   
+                    alert('Huy don hang thanh cong'); 
+                    location.reload();                                                    
+				}
+			});
+    }
+</script>

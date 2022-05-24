@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\ProductSize;
 use App\Models\User;
 use DB;
 // use App\Http\Requests\OrderRequest;
@@ -24,7 +25,9 @@ class OrderController extends Controller
             $orders = Order::where(Order::raw('date(created_at)') ,$searchKey)->orderBy('status')->paginate($this->paginate);        
           ;
         }  
-        
+        if(!empty($request->status)){
+            $orders = Order::where('status',$request->status)->paginate($this->paginate);
+        }  
         return view('admin.order.index', compact([
             "tab",
             "orders",
@@ -64,7 +67,17 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $order = Order::findOrFail($id);
-
+        if($order->status < 2){
+            $orderDetail = OrderDetail::where('order_id', $id)->get();
+            foreach($orderDetail as $item){
+                $productSize = ProductSize::findOrFail($item['product_size_id']);
+                $qlty = $productSize->quantity + $item['quantity'];
+                $productSize->update([
+                    'quantity' => $qlty,
+                ]);
+            }
+        }
+        
         if ($order) {
             $order->delete();
         
@@ -72,5 +85,6 @@ class OrderController extends Controller
         }
         
         return redirect()->route('orders.index')->with('messageSuccess', 'Không tồn tại');
+        
     }
 }
