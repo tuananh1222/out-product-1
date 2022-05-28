@@ -14,6 +14,8 @@
                             <option class="dropdown-item" value="0">Đã xác nhận</option>
                             <option class="dropdown-item" value="1">Chưa xác nhận</option>
                             <option class="dropdown-item" value="2">Đã thanh toán</option>
+                            <option class="dropdown-item" value="3">Đã hủy hàng</option>
+                            <option class="dropdown-item" value="4">Đã hoàn trả</option>
                         </select>
                         <input type="text" id="keyword1" name="keyword" class="form-control col-3"                        
                                 style="margin-left: 400px; width: 300px">  

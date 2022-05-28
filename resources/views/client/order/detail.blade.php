@@ -48,14 +48,13 @@
                                     <td></td>
                                     <td><b>{{ number_format($total) }}đ</b></td>
                                 </tr>
-                                <tr>
-                                   
+                                <tr>                                   
                                     <td>
                                         <div class="modal fade" id="exampleModal" role="dialog" >
                                             <div class="modal-dialog" >
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Lý do hủy hàng</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
                                                     &times;
                                                 </button>
@@ -74,13 +73,45 @@
                                             </div>
                                             </div>
                                         </div>
-                                    @if ($item->order->status !=3)
+                                    @if ($item->order->status == 1)
                                         <p>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                                                 Hủy đơn hàng
                                             </button>
                                         </p>
                                     @endif
+                                    </td>
+                                    <td>
+                                        <div class="modal fade" id="trahang" role="dialog" >
+                                            <div class="modal-dialog" >
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Lý do trả hàng</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                                                    &times;
+                                                </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <textarea name="lydotra" id="lydotra" rows="3" 
+                                                                 placeholder="Nhập lý do trả...."
+                                                                 style="width:100%"></textarea>
+                                                    
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                                                <button type="button" class="btn btn-primary" id="{{$item->order_id}}"
+                                                    onclick="Trahang(this.id)">Gửi</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        @if ($item->order->status == 2)
+                                        <p>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#trahang">
+                                                Trả hàng
+                                            </button>
+                                        </p>
+                                        @endif
                                     </td>
                                 </tr>                                
                             </tbody>

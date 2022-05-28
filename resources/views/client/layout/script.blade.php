@@ -43,4 +43,23 @@
 				}
 			});
     }
+    function Trahang(id){
+        var _token = $('input[name="_token"]').val();
+        var id = id;
+        var lydohuydon = $('#lydotra').val();
+        var url = window.location.origin;     
+        $.ajax({
+				url: url + '/return-order',
+				method:"POST",				
+				data:{
+                    id:id,
+                    lydo:lydohuydon, 
+                    _token:_token,
+                },
+				success: function(data){					   
+                    alert(data); 
+                    location.reload();                                                    
+				}
+			});
+    }
 </script>

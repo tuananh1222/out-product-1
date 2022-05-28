@@ -14,7 +14,7 @@ use App\Models\ProductSize;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Mail\OrderMail;
-
+use Carbon\Carbon;
 class CartController extends Controller
 {
     public function index()
@@ -188,7 +188,6 @@ class CartController extends Controller
             $data = $request->all();
             $mail = [];
             $cart = session()->get('cart');
-            
             if (!Auth::check()) {
                 $user = User::where('email', $data['email'])
                     ->orWhere('phone', $data['phone'])
@@ -207,8 +206,9 @@ class CartController extends Controller
             }
 
             $data['user_id'] = $user->id;
+            
             $order = Order::create($data);
-
+          
             foreach ($cart as $item) {
                 OrderDetail::create([
                     'order_id' => $order->id,
@@ -216,7 +216,7 @@ class CartController extends Controller
                     'quantity' => $item['quantity'],
                     'total' => $item['total'],
                 ]);
-
+            
                 $productSize = ProductSize::findOrFail($item['product_size_id']);
 
                 if ($productSize->quantity == 0) {
@@ -306,5 +306,30 @@ class CartController extends Controller
                 'quantity' => $qlty,
             ]);
         }
+    }
+    public function returnOrder(Request $request)
+    {
+        $data = $request->all();        
+        $order = Order::findOrFail($data['id']);
+        $now = Carbon::now('Asia/Ho_Chi_Minh');
+        $result = '';
+        $date = $now->diff($order->updated_at)->d;
+        if($date < '7'){
+            $order->update([
+                'status' => 4,
+            ]);
+            $orderDetail = OrderDetail::where('order_id', $data['id'])->get();
+            foreach($orderDetail as $item){
+                $productSize = ProductSize::findOrFail($item['product_size_id']);
+                $qlty = $productSize->quantity + $item['quantity'];
+                $productSize->update([
+                    'quantity' => $qlty,
+                ]);
+            }
+            $result = "Trả hàng thành công";
+        }else
+            $result = "Bạn không thể trả hàng vì quá ngày qui định";
+        echo $result;
+        
     }
 }

@@ -14,7 +14,7 @@ use App\Helper;
 
 class ProductController extends Controller
 {
-    protected $paginate = 8;
+    protected $paginate = 6;
     
     public function index(Request $request)
     {

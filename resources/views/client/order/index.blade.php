@@ -57,7 +57,8 @@
                                             {{ date('d/m/Y H:i:m', strtotime($order->created_at)) }}
                                         </td>
                                         
-                                    </tr>
+                                    </tr>                              
+ 
                                 @endforeach
                             </tbody>
                         </table>

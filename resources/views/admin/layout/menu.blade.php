@@ -28,7 +28,7 @@
             <li class="{{ request()->is('*admin/sizes*') ? 'active' : '' }}">
                 <a href="{{ route('sizes.index') }}">
                     <i class="fa fa-list-ul"></i>
-                    <span>Quản lý tình trạng</span>
+                    <span>Quản lý kích thước</span>
                 </a>
             </li>
             <li class="{{ request()->is('*admin/products*') ? 'active' : '' }}">

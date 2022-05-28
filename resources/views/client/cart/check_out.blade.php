@@ -94,7 +94,7 @@
                                     </tr>
                                 @endforeach
                                 <tr>
-                                    <td></td>
+                                    <td><input name ="total" type="hidden" value={{ $total}}></td>
                                     <td><b style="color: red">{{ number_format($total) }}đ</b></td>
                                 </tr>
                             </tbody>
