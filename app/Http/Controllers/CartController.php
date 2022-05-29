@@ -39,6 +39,7 @@ class CartController extends Controller
 
     public function addCart(AddCartRequest $request)
     {
+        
         $data = $request->all();
 
         $productSize = ProductSize::findOrFail($data['product_size_id'])->load([
@@ -63,6 +64,7 @@ class CartController extends Controller
         $price = ($product->sale_percent == 0) ? $product->price : $product->price_sale;
 
 		$cart = session()->get('cart');
+        
 		$rowId = md5($data['product_size_id'] . time());
         
 		if (empty($cart)) {
@@ -103,10 +105,10 @@ class CartController extends Controller
                 ];
             }
         }
-
+    
         session()->put('cart', $cart);
         session()->save();
-        
+       
         return response()->json([
             'message' => 'Đã thêm vào giỏ hàng'
         ]);
@@ -183,12 +185,12 @@ class CartController extends Controller
     public function checkOut(CheckOutRequest $request)
     {
         DB::beginTransaction();
-
+        
         try {
             $data = $request->all();
             $mail = [];
             $cart = session()->get('cart');
-            if (!Auth::check()) {
+           if (!Auth::check()) {
                 $user = User::where('email', $data['email'])
                     ->orWhere('phone', $data['phone'])
                     ->first();
@@ -217,6 +219,7 @@ class CartController extends Controller
                     'total' => $item['total'],
                 ]);
             
+            
                 $productSize = ProductSize::findOrFail($item['product_size_id']);
 
                 if ($productSize->quantity == 0) {
@@ -239,18 +242,19 @@ class CartController extends Controller
                     }
                 }
             }
-
-            session()->pull('cart');
+ 
+            session()->pull('cart', $cart);
             session()->save();
 
             $mail['name'] = $user->name;
             $mail['email'] = $user->email;
             $mail['phone'] = $user->phone;
             $mail['address'] = $user->address;
+            
             Mail::to($mail['email'])->send(new OrderMail($mail));
 
             DB::commit();
-
+           
             return redirect()->route('home')->with('message', 'Đặt hàng thành công');
         } catch (\Exception $ex) {
             DB::rollBack();
