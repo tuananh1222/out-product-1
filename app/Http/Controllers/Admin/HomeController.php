@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function home()
     {
-        return view('admin.app');
+       return view('admin.app');
     }
 
     public function dashboard()

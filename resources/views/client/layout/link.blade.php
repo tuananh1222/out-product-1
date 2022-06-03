@@ -22,7 +22,7 @@
 <!-- responsive -->
 <link rel="stylesheet" href="{{ asset('client/assets/css/responsive.css') }}">
 
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 @yield('link')
 
 <style>
@@ -129,7 +129,26 @@
     h1 {
         font-family: system-ui;
     }
+    .badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
 
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px; 
+}
     @media only screen and (max-width: 992px) {
         .sub-menu {
             width: 100% !important;

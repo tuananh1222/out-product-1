@@ -90,11 +90,13 @@
                                     @endif
                                 </ul>
                             </li>
+
                             <li>
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="{{ route('cart') }}">
-                                        <i class="fas fa-shopping-cart {{ request()->is('cart*') ? "active-menu" : "" }}"></i>
-                                    </a>
+                                        <i class="fa {{ request()->is('cart*') ? "active-menu" : "" }}" style="font-size:24px">&#xf07a;</i>
+                                        <span class='badge badge-warning' id='lblCartCount'>{{$total_order}} </span>
+                                    </a>                                    
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                 </div>
                             </li>

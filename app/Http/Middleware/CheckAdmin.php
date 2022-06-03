@@ -18,7 +18,7 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth()->user()->role_id == 0) {
+        if (Auth()->user()->role_id == 0 || Auth()->user()->role_id == 2) {
             return $next($request);
         }
 

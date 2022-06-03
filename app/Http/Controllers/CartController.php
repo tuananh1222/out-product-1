@@ -23,9 +23,11 @@ class CartController extends Controller
 		$cart = session()->get('cart');
         $total = 0;
         $title = $pageNameRoot;
+        $total_order = 0;
         if (!empty($cart)) {
             foreach ($cart as $item) {
                 $total += $item['total'];
+                $total_order++;
             }
         }
 
@@ -33,7 +35,8 @@ class CartController extends Controller
             'pageNameRoot',
             'cart',
             'total',
-            'title'
+            'title',
+            'total_order'
         ]));
     }
 
@@ -112,6 +115,7 @@ class CartController extends Controller
         return response()->json([
             'message' => 'Đã thêm vào giỏ hàng'
         ]);
+         
     }
 
 	public function removeCart($rowId)

@@ -73,20 +73,7 @@
                                 >
                                     Mô tả
                                 </a>
-                            </li>
-                            <li class="nav-item item">
-                                <a
-                                    class="nav-link active"
-                                    id="review-tab"
-                                    data-toggle="tab"
-                                    href="#review"
-                                    role="tab"
-                                    aria-controls="review"
-                                    aria-selected="false"
-                                >
-                                    Bình luận
-                                </a>
-                            </li>
+                            </li>                          
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div
@@ -200,14 +187,17 @@
 
             setTimeout(function() {
                 $('.notification').text('');
+                AutoReload();
             }, 60000)
+            
         })
         .fail(function(err) {
             alert(err.responseJSON.errors.quantity[0])
         })
         .always(function() {
 
-        });
+        })
+        
     });
 </script>
 @endsection
