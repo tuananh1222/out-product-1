@@ -45,7 +45,7 @@
 					</div>
 					 <div class="col-md-8 market-update-left">
 					 <h4>Visitors</h4>
-					<h3>13,500</h3>
+					<h3>100</h3>
 					<p>Other hand, we denounce</p>
 				  </div>
 				  <div class="clearfix"> </div>

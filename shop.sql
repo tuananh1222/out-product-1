@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2022 at 12:04 PM
+-- Generation Time: Jun 10, 2022 at 04:57 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -143,10 +143,17 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `note`, `status`, `notification`, `created_at`, `updated_at`) VALUES
-(4, 6, 'ok ok ok', 2, 0, '2021-12-13 13:09:36', '2022-05-28 09:51:24'),
-(6, 7, '123dfsd f', 1, 0, '2021-12-13 13:10:52', '2022-05-28 09:16:52'),
-(7, 7, NULL, 4, 0, '2021-12-13 13:17:47', '2022-05-28 09:57:19'),
-(8, 7, NULL, 3, 0, '2021-12-13 13:19:11', '2022-05-28 09:53:55');
+(4, 6, 'ok ok ok', 2, 0, '2022-05-01 13:09:36', '2022-05-28 09:51:24'),
+(6, 7, '123dfsd f', 2, 0, '2022-05-02 13:10:52', '2022-05-29 02:36:27'),
+(7, 7, NULL, 4, 0, '2022-05-04 13:17:47', '2022-05-28 09:57:19'),
+(8, 7, NULL, 3, 0, '2022-05-01 13:19:11', '2022-05-28 09:53:55'),
+(56, 7, NULL, 2, 0, '2022-05-28 15:14:42', '2022-05-29 02:36:51'),
+(59, 25, NULL, 2, 0, '2022-05-28 15:17:51', '2022-06-10 01:52:07'),
+(64, 25, NULL, 2, 0, '2022-05-28 15:48:09', '2022-06-10 02:34:54'),
+(65, 6, NULL, 2, 0, '2022-06-01 02:18:24', '2022-06-10 02:21:19'),
+(66, 6, NULL, 2, 0, '2022-06-08 02:27:01', '2022-06-10 02:35:31'),
+(67, 6, NULL, 2, 0, '2022-06-06 02:29:45', '2022-06-10 02:35:06'),
+(68, 6, NULL, 1, 1, '2022-06-10 02:30:40', '2022-06-10 02:30:40');
 
 -- --------------------------------------------------------
 
@@ -173,7 +180,15 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_size_id`, `quantity`, `t
 (6, 4, 1, 1, 280000, '2021-12-13 13:09:36', '2021-12-13 13:09:36'),
 (7, 6, 1, 1, 19000, '2021-12-13 13:10:53', '2021-12-13 13:10:53'),
 (8, 7, 1, 1, 350000, '2021-12-13 13:17:47', '2021-12-13 13:17:47'),
-(9, 8, 1, 1, 19000, '2021-12-13 13:19:11', '2021-12-13 13:19:11');
+(9, 8, 1, 1, 19000, '2021-12-13 13:19:11', '2021-12-13 13:19:11'),
+(54, 56, 19, 1, 100000, '2022-05-28 15:14:42', '2022-05-28 15:14:42'),
+(57, 59, 24, 2, 47600, '2022-05-28 15:17:51', '2022-05-28 15:17:51'),
+(62, 64, 18, 1, 2000000, '2022-05-28 15:48:09', '2022-05-28 15:48:09'),
+(64, 65, 21, 1, 800000, '2022-06-01 02:18:24', '2022-06-10 02:18:24'),
+(65, 66, 20, 1, 40000, '2022-06-08 02:27:01', '2022-06-10 02:27:01'),
+(66, 66, 1, 1, 125, '2022-06-08 02:27:01', '2022-06-10 02:27:01'),
+(67, 67, 23, 1, 20000, '2022-06-06 02:29:45', '2022-06-10 02:29:45'),
+(68, 68, 17, 3, 121500, '2022-06-10 02:30:40', '2022-06-10 02:30:40');
 
 -- --------------------------------------------------------
 
@@ -243,11 +258,12 @@ INSERT INTO `products` (`id`, `category_id`, `image`, `name`, `description`, `pr
 (23, 5, '2022-05-28-04-32-406291ec38dad06.jpg', 'Tôm hùm', '<p>Được coi l&agrave; một trong những loại t&ocirc;m h&ugrave;m ngon nhất thế giới, t&ocirc;m h&ugrave;m đỏ được t&igrave;m thấy nhiều nhất ở ngo&agrave;i khơi v&ugrave;ng biển thuộc v&ugrave;ng thềm lục địa T&acirc;y &Uacute;c thuộc khu vực giữa Perth v&agrave; Geraldton. Đặc biệt, khu vực Port Healand ch&iacute;nh l&agrave; địa điểm l&yacute; tưởng nhất để t&ocirc;m h&ugrave;m &Uacute;c sinh sản.</p>', 2000000, 0, 2000000, 1, '2022-05-28 09:32:40', '2022-05-28 09:32:40'),
 (24, 5, '2022-05-28-04-34-076291ec8f5e52e.jpg', 'Tôm sú', '<p>&ocirc;m s&uacute;, t&ecirc;n khoa học l&agrave; Penaeus monodon, l&agrave; một loại t&ocirc;m được ưa chuộng khắp thế giới. T&ocirc;m s&uacute; được biết đến l&agrave; lo&agrave;i t&ocirc;m biển, ph&acirc;n bố trải d&agrave;i từ bờ Đ&ocirc;ng Ch&acirc;u Phi đến tận bờ biển Nhật Bản. Ở một số v&ugrave;ng biển Đ&ocirc;ng &Uacute;c, Địa Trung Hải, Hawaii v&agrave; bờ biển Đại T&acirc;y Dương của Mỹ cũng xuất hiện lo&agrave;i t&ocirc;m n&agrave;y nhưng với số lượng kh&ocirc;ng nhiều.</p>\r\n\r\n<p>T&ocirc;m s&uacute; c&oacute; k&iacute;ch thước lớn, trung b&igrave;nh d&agrave;i khoảng 36cm mỗi con v&agrave; đồng thời khối lượng cũng lớn hơn so với c&aacute;c loại t&ocirc;m kh&aacute;c, l&ecirc;n đến 650gr/con. Vỏ t&ocirc;m d&agrave;y gồm nhiều m&agrave;u như đỏ, n&acirc;u, x&aacute;m, xanh đan xen. Thịt t&ocirc;m s&uacute; cũng dai v&agrave; chắc hơn so với t&ocirc;m thẻ.</p>\r\n\r\n<p>T&ocirc;m s&uacute; l&agrave; lo&agrave;i&nbsp;<a href=\"https://vi.wikipedia.org/wiki/%C4%90%E1%BB%99ng_v%E1%BA%ADt_m%C3%A1u_l%E1%BA%A1nh\" target=\"_blank\">động vật m&aacute;u lạnh</a>&nbsp;n&ecirc;n rất dễ bị ảnh hưởng bởi kh&iacute; hậu. Trước kia, t&ocirc;m s&uacute; chỉ sinh sống ở biển nhưng do thị hiếu người ti&ecirc;u d&ugrave;ng n&ecirc;n loại t&ocirc;m n&agrave;y đ&atilde; được nu&ocirc;i trồng ở c&aacute;c v&ugrave;ng nước ngọt.</p>', 100000, 0, 100000, 1, '2022-05-28 09:34:07', '2022-05-28 09:34:07'),
 (25, 6, '2022-05-28-04-37-596291ed77a7c27.jpg', 'Cá riêu hồng', '<p>Đ&acirc;y l&agrave; lo&agrave;i&nbsp;<strong>c&aacute; ăn tạp</strong>,&nbsp;<strong>thức ăn</strong>&nbsp;thi&ecirc;n về nguồn gốc&nbsp;<strong>thực vật</strong>&nbsp;như&nbsp;<strong>c&aacute;m, bắp</strong>&nbsp;xay nhỏ,&nbsp;<strong>b&atilde; đậu, b&egrave;o tấm,&nbsp;</strong><strong><a href=\"https://vi.wikipedia.org/wiki/Rau_mu%E1%BB%91ng\">rau muống</a></strong>&nbsp;v&agrave; c&aacute;c chất như m&ugrave;n b&atilde; hữu cơ, tảo, ấu tr&ugrave;ng, c&ocirc;n tr&ugrave;ng, do đ&oacute; nguồn thức ăn cho c&aacute; rất đa dạng, bao gồm c&aacute;c loại c&aacute;m thực phẩm, khoai củ, ngũ cốc,...</p>\r\n\r\n<p><strong>C&aacute; di&ecirc;u hồng</strong>&nbsp;l&agrave; lo&agrave;i&nbsp;<strong>mắn đẻ</strong>,&nbsp;<strong>đẻ quanh năm</strong>, ấp trứng trong miệng. C&oacute; thể ương c&aacute; con trong ao hoặc trong chậu, lồng. Khi ương trong ao cần b&oacute;n ph&acirc;n g&acirc;y&nbsp;<strong>thức ăn tự nhi&ecirc;n</strong>&nbsp;để nu&ocirc;i c&aacute; bột, c&ograve;n khi ương trong lồng, chậu th&igrave; kh&ocirc;ng cần b&oacute;n ph&acirc;n nhưng phải thường xuy&ecirc;n vệ sinh chập, lồng.&nbsp;</p>\r\n\r\n<p><strong>C&aacute; di&ecirc;u hồng</strong>&nbsp;được chăn nu&ocirc;i&nbsp;<strong>chủ yếu</strong>&nbsp;ở miền&nbsp;<strong><a href=\"https://vi.wikipedia.org/wiki/Mi%E1%BB%81n_Nam_(Vi%E1%BB%87t_Nam)\">Nam bộ</a></strong>&nbsp;m&agrave; tập trung ở&nbsp;<strong><a href=\"https://vi.wikipedia.org/wiki/%C4%90%E1%BB%93ng_b%E1%BA%B1ng_s%C3%B4ng_C%E1%BB%ADu_Long\">đồng bằng s&ocirc;ng Cửu Long</a>,</strong>&nbsp;nơi c&oacute; những điều kiện về thổ nhưỡng, thủy lưu th&iacute;ch hợp nhất cho lo&agrave;i c&aacute; n&agrave;y.&nbsp;</p>', 40000, 0, 40000, 1, '2022-05-28 09:37:59', '2022-05-28 09:37:59'),
-(26, 6, '2022-05-28-04-39-246291edcc8b91e.jpg', 'Cá mú đỏ', '<p><strong>M&agrave;u sắc</strong>&nbsp;của c&aacute; mập vi&ecirc;n ngọc l&agrave;&nbsp;<strong>m&agrave;u đỏ cam</strong>&nbsp;đến&nbsp;<strong>m&agrave;u n&acirc;u đỏ</strong>&nbsp;với nhiều chấm m&agrave;u xanh s&aacute;ng c&oacute; đường k&iacute;nh nhỏ hơn đường k&iacute;nh của học sinh. Cơ thể ph&iacute;a trước thường tối hơn một ch&uacute;t. M&eacute;p ph&iacute;a sau của v&acirc;y đu&ocirc;i, cũng như v&ugrave;ng da mềm của v&acirc;y hậu m&ocirc;n v&agrave; hậu m&ocirc;n c&oacute; m&agrave;u xanh v&agrave; m&agrave;u đen.&nbsp;</p>\r\n\r\n<p><strong>C&aacute; m&uacute;</strong>&nbsp;l&agrave; lo&agrave;i&nbsp;<strong>c&aacute; dữ</strong>, k&iacute;ch thước cơ thể đa dạng, chiều d&agrave;i th&acirc;n gấp 3-3,5 lần chiều cao; nổi bật với miệng rộng<strong>, h&agrave;m răng sắc nhọn</strong>, chếch, h&agrave;m dưới hơi nh&ocirc; d&agrave;i ra ph&iacute;a trước,&nbsp;<strong>th&acirc;n trơn</strong>, thu&ocirc;n d&agrave;i về ph&iacute;a đu&ocirc;i, m&igrave;nh dẹp.</p>\r\n\r\n<p><strong>C&aacute; m&uacute;</strong>&nbsp;l&agrave; lo&agrave;i&nbsp;<strong><a href=\"https://thegioidongvat.co/tag/dong-vat-an-thit/\" target=\"_blank\">động vật ăn thịt</a></strong>, ch&uacute;ng nuốt sống con mồi bằng động t&aacute;c mở lớn miệng rồi d&ugrave;ng h&agrave;m răng sắc nhọn giữ chặt con mồi nhưng kh&ocirc;ng l&agrave;m chết ch&uacute;ng.&nbsp;<strong>Thức ăn</strong>&nbsp;chủ yếu của&nbsp;<strong>c&aacute; m&uacute;</strong>&nbsp;thường&nbsp;<strong>l&agrave; c&aacute; con</strong>,&nbsp;<strong>t&ocirc;m, mực, gi&aacute;p x&aacute;c</strong>, động vật ph&ugrave; du (c&aacute; mới nở), thậm ch&iacute;&nbsp;<a href=\"https://thegioidongvat.co/diem-danh-15-sat-thu-dong-vat-thit-chinh-dong-loai-cua-minh/\" target=\"_blank\">ăn thịt đồng loại</a>&nbsp;ở giai đoạn c&aacute; con khi khi qu&aacute; đ&oacute;i.</p>\r\n\r\n<p><strong>C&aacute; m&uacute;</strong>&nbsp;hay c&aacute; song ph&acirc;n bố chủ yếu ở&nbsp;<strong>v&ugrave;ng nhiệt đới</strong>&nbsp;v&agrave;&nbsp;<strong>cận nhiệt đới</strong>, nơi c&oacute; c&aacute;c rạn san h&ocirc;, đ&aacute; ngầm hay v&ugrave;ng biển ấm tại khu vực ch&acirc;u &Aacute; &ndash; Th&aacute;i B&igrave;nh Dương gồm c&aacute;c quốc gia như: Đ&agrave;i Loan, Trung Quốc, Philippines,&hellip; Tại Việt Nam, lo&agrave;i c&aacute; n&agrave;y ph&acirc;n bố từ vịnh Bắc Bộ đến vịnh Th&aacute;i Lan, tập trung nhiều tại c&aacute;c tỉnh Nam Trung Bộ.</p>', 800000, 0, 800000, 1, '2022-05-28 09:39:24', '2022-05-28 09:39:24'),
+(26, 6, '2022-05-29-10-03-116292e26f6b161.jpg', 'Cá mú đỏ', '<p><strong>M&agrave;u sắc</strong>&nbsp;của c&aacute; mập vi&ecirc;n ngọc l&agrave;&nbsp;<strong>m&agrave;u đỏ cam</strong>&nbsp;đến&nbsp;<strong>m&agrave;u n&acirc;u đỏ</strong>&nbsp;với nhiều chấm m&agrave;u xanh s&aacute;ng c&oacute; đường k&iacute;nh nhỏ hơn đường k&iacute;nh của học sinh. Cơ thể ph&iacute;a trước thường tối hơn một ch&uacute;t. M&eacute;p ph&iacute;a sau của v&acirc;y đu&ocirc;i, cũng như v&ugrave;ng da mềm của v&acirc;y hậu m&ocirc;n v&agrave; hậu m&ocirc;n c&oacute; m&agrave;u xanh v&agrave; m&agrave;u đen.&nbsp;</p>\r\n\r\n<p><strong>C&aacute; m&uacute;</strong>&nbsp;l&agrave; lo&agrave;i&nbsp;<strong>c&aacute; dữ</strong>, k&iacute;ch thước cơ thể đa dạng, chiều d&agrave;i th&acirc;n gấp 3-3,5 lần chiều cao; nổi bật với miệng rộng<strong>, h&agrave;m răng sắc nhọn</strong>, chếch, h&agrave;m dưới hơi nh&ocirc; d&agrave;i ra ph&iacute;a trước,&nbsp;<strong>th&acirc;n trơn</strong>, thu&ocirc;n d&agrave;i về ph&iacute;a đu&ocirc;i, m&igrave;nh dẹp.</p>\r\n\r\n<p><strong>C&aacute; m&uacute;</strong>&nbsp;l&agrave; lo&agrave;i&nbsp;<strong><a href=\"https://thegioidongvat.co/tag/dong-vat-an-thit/\" target=\"_blank\">động vật ăn thịt</a></strong>, ch&uacute;ng nuốt sống con mồi bằng động t&aacute;c mở lớn miệng rồi d&ugrave;ng h&agrave;m răng sắc nhọn giữ chặt con mồi nhưng kh&ocirc;ng l&agrave;m chết ch&uacute;ng.&nbsp;<strong>Thức ăn</strong>&nbsp;chủ yếu của&nbsp;<strong>c&aacute; m&uacute;</strong>&nbsp;thường&nbsp;<strong>l&agrave; c&aacute; con</strong>,&nbsp;<strong>t&ocirc;m, mực, gi&aacute;p x&aacute;c</strong>, động vật ph&ugrave; du (c&aacute; mới nở), thậm ch&iacute;&nbsp;<a href=\"https://thegioidongvat.co/diem-danh-15-sat-thu-dong-vat-thit-chinh-dong-loai-cua-minh/\" target=\"_blank\">ăn thịt đồng loại</a>&nbsp;ở giai đoạn c&aacute; con khi khi qu&aacute; đ&oacute;i.</p>\r\n\r\n<p><strong>C&aacute; m&uacute;</strong>&nbsp;hay c&aacute; song ph&acirc;n bố chủ yếu ở&nbsp;<strong>v&ugrave;ng nhiệt đới</strong>&nbsp;v&agrave;&nbsp;<strong>cận nhiệt đới</strong>, nơi c&oacute; c&aacute;c rạn san h&ocirc;, đ&aacute; ngầm hay v&ugrave;ng biển ấm tại khu vực ch&acirc;u &Aacute; &ndash; Th&aacute;i B&igrave;nh Dương gồm c&aacute;c quốc gia như: Đ&agrave;i Loan, Trung Quốc, Philippines,&hellip; Tại Việt Nam, lo&agrave;i c&aacute; n&agrave;y ph&acirc;n bố từ vịnh Bắc Bộ đến vịnh Th&aacute;i Lan, tập trung nhiều tại c&aacute;c tỉnh Nam Trung Bộ.</p>', 800000, 0, 800000, 1, '2022-05-28 09:39:24', '2022-05-29 03:03:11'),
 (27, 6, '2022-05-28-04-40-346291ee12ba27d.jpg', 'Cá đối mục', '<p><strong>C&aacute; đối mục</strong>&nbsp;l&agrave; lo&agrave;i sinh sống ven biển hoạt động chủ yếu l&agrave; ban ng&agrave;y thường đi v&agrave;o cửa s&ocirc;ng v&agrave; c&aacute;c con s&ocirc;ng.&nbsp;<strong>C&aacute; đối mục</strong>&nbsp;thường bơi th&agrave;nh đ&agrave;n tr&ecirc;n đ&aacute;y c&aacute;t hoặc b&ugrave;n, ăn động vật ph&ugrave; du.</p>\r\n\r\n<p>Đặc điểm của&nbsp;<strong>c&aacute; đối mục</strong>&nbsp;l&agrave; th&acirc;n tr&ograve;n d&agrave;i, dẹt, vảy tr&ograve;n c&oacute; m&agrave;u trắng bạc</p>\r\n\r\n<p>Hiện nay&nbsp;<strong>c&aacute; đối mục</strong>&nbsp;được nu&ocirc;i kh&aacute; phổ biến ở c&aacute;c tỉnh miền nam , miền trung v&agrave; miền bắc</p>', 150000, 0, 150000, 1, '2022-05-28 09:40:34', '2022-05-28 09:40:34'),
 (28, 8, '2022-05-28-04-42-576291eea17910e.jpg', 'Bánh tráng ớt', '<p><a href=\"https://www.bachhoaxanh.com/banh-trang-tinh-nguyen\">B&aacute;nh tr&aacute;ng Tinh Nguy&ecirc;n</a>&nbsp;c&oacute; vị cay the, nồng nồng k&iacute;ch th&iacute;ch vị gi&aacute;c số một.&nbsp;<a href=\"https://www.bachhoaxanh.com/banh-trang\">B&aacute;nh</a>&nbsp;c&oacute; đường k&iacute;nh 22 cm tiện lợi cho nhiều m&oacute;n cuốn rất đặc biệt. Ngo&agrave;i ra&nbsp;<a href=\"https://www.bachhoaxanh.com/banh-trang/banh-trang-ot-tinh-nguyen-goi-200g-60\">b&aacute;nh tr&aacute;ng ớt 22cm Tinh Nguy&ecirc;n g&oacute;i 200g</a>&nbsp;c&oacute; thể ăn vặt cũng rất hấp dẫn. Khối lượng 200g ph&ugrave; hợp cho gia đ&igrave;nh.</p>\r\n\r\n<ul>\r\n	<li>Th&agrave;nh phần&nbsp;\r\n	<p>Tinh bột khoai m&igrave;, ớt, tỏi, bột ngọt, hẹ, muối, nước</p>\r\n	</li>\r\n	<li>Đặc t&iacute;nh&nbsp;\r\n	<p>B&aacute;nh dẻo thơm, cay mặn vừa ăn</p>\r\n	</li>\r\n	<li>Khối lượng&nbsp;\r\n	<p>200g</p>\r\n	</li>\r\n	<li>K&iacute;ch thước&nbsp;\r\n	<p>22cm</p>\r\n	</li>\r\n	<li>C&aacute;ch d&ugrave;ng&nbsp;\r\n	<p>D&ugrave;ng ngay khi mở bao b&igrave;</p>\r\n	</li>\r\n	<li>Bảo quản&nbsp;\r\n	<p>Bảo quản trong bao k&iacute;n, nơi kh&ocirc; r&aacute;o, tho&aacute;ng m&aacute;t</p>\r\n	</li>\r\n	<li>Thương hiệu&nbsp;\r\n	<p>Tinh Nguy&ecirc;n (Việt Nam)</p>\r\n	</li>\r\n	<li>Nơi sản xuất&nbsp;\r\n	<p>Việt Nam</p>\r\n	</li>\r\n</ul>', 20000, 0, 20000, 1, '2022-05-28 09:42:57', '2022-05-28 09:42:57'),
 (29, 8, '2022-05-28-04-44-186291eef2bbb17.jpg', 'Bánh tráng Mekon River', '<p>Được l&agrave;m từ gạo tạo n&ecirc;n sự dai, dẻo khi cuốn kh&ocirc;ng bị r&aacute;ch b&aacute;nh m&agrave; c&ograve;n tạo cảm gi&aacute;c ngon miệng, k&iacute;ch th&iacute;ch vị gi&aacute;c khi ăn. B&aacute;nh c&oacute; đường k&iacute;nh 22cm gi&uacute;p dễ cuốn v&agrave; chế biến m&oacute;n ăn. Khối lượng 300g sử dụng cho cả gia đ&igrave;nh.</p>\r\n\r\n<ul>\r\n	<li>T&ecirc;n sản phầm&nbsp;\r\n	<p>B&aacute;nh tr&aacute;ng</p>\r\n	</li>\r\n	<li>Th&agrave;nh phần&nbsp;\r\n	<p>Bột khoai m&igrave;, gạo, nước, muối</p>\r\n	</li>\r\n	<li>Khối lượng&nbsp;\r\n	<p>300g</p>\r\n	</li>\r\n	<li>K&iacute;ch thước&nbsp;\r\n	<p>22cm</p>\r\n	</li>\r\n	<li>Bảo quản&nbsp;\r\n	<p>Bảo quản trong bao k&iacute;n, nơi kh&ocirc; r&aacute;o, tho&aacute;ng m&aacute;t</p>\r\n	</li>\r\n	<li>Thương hiệu&nbsp;\r\n	<p>Mekong River ()</p>\r\n	</li>\r\n	<li>Nơi sản xuất&nbsp;\r\n	<p>Việt Nam</p>\r\n	</li>\r\n</ul>\r\n\r\n<p><a href=\"https://www.bachhoaxanh.com/banh-trang\" target=\"_blank\">B&aacute;nh tr&aacute;ng</a>&nbsp;l&agrave; một m&oacute;n ăn d&acirc;n d&atilde; quen thuộc với người Việt, b&aacute;nh tr&aacute;ng mặt trong rất nhiều m&oacute;n ăn ngon từ chả gi&ograve;, cuốn b&igrave;, b&aacute;nh x&egrave;o&hellip; Sản phẩm<a href=\"https://www.bachhoaxanh.com/banh-trang/banh-trang-22cm-bich-chi-400g\" target=\"_blank\">&nbsp;b&aacute;nh tr&aacute;n</a><a href=\"https://www.bachhoaxanh.com/banh-trang/banh-trang-22cm-mekong-river-goi-300g\" target=\"_blank\">g&nbsp; Mekong River 22cm g&oacute;i 300g</a>&nbsp;mềm dai từ&nbsp;<a href=\"https://www.bachhoaxanh.com/banh-trang-mekong-river\" target=\"_blank\">thương hiệu Mekong Rive</a>r kh&ocirc;ng thể thiếu trong c&aacute;c m&oacute;n ăn n&agrave;y.</p>', 23800, 0, 23800, 1, '2022-05-28 09:44:18', '2022-05-28 09:44:18'),
-(30, 8, '2022-05-28-04-45-346291ef3ed07bf.jpg', 'Bánh tráng chả giò', '<p><a href=\"https://www.bachhoaxanh.com/banh-trang-cau-tre\">B&aacute;nh tr&aacute;ng Cầu Tre</a>&nbsp;th&iacute;ch hợp cho những m&oacute;n t&ocirc;m cuốn hoặc chả ram.&nbsp;<a href=\"https://www.bachhoaxanh.com/banh-trang/banh-trang-cha-gio-19cm-cau-tre-goi-280g\">B&aacute;nh tr&aacute;ng chả gi&ograve; 19cm Cầu Tre g&oacute;i 280g</a>&nbsp;khi cuốn kh&ocirc;ng bị r&aacute;ch, khi chi&ecirc;n l&ecirc;n c&oacute; độ dai d&ograve;n nhất định.&nbsp;<a href=\"https://www.bachhoaxanh.com/banh-trang\">B&aacute;nh tr&aacute;ng</a>&nbsp;th&iacute;ch hợp để chế biến c&aacute;c m&oacute;n ăn vặt hoặc những dịp lễ, đ&aacute;m cho gia đ&igrave;nh.</p>\r\n\r\n<ul>\r\n	<li>T&ecirc;n sản phầm&nbsp;\r\n	<p>B&aacute;nh tr&aacute;ng chả gi&ograve;</p>\r\n	</li>\r\n	<li>Th&agrave;nh phần&nbsp;\r\n	<p>Gạo, bột năng, muối, đường, dầu cọ</p>\r\n	</li>\r\n	<li>Khối lượng&nbsp;\r\n	<p>280g</p>\r\n	</li>\r\n	<li>K&iacute;ch thước&nbsp;\r\n	<p>19cm</p>\r\n	</li>\r\n	<li>C&aacute;ch d&ugrave;ng&nbsp;\r\n	<p>Thoa đều nước l&ecirc;n một mặt b&aacute;nh chờ trong 10 - 15 gi&acirc;y cho b&aacute;nh mềm Đặt phần nh&acirc;n chả gi&ograve; v&agrave;o b&aacute;nh tr&aacute;ng Gấp một đầu v&agrave; hai b&ecirc;n của b&aacute;nh tr&aacute;ng lại Cuộn tr&ograve;n cho hết miếng b&aacute;nh Chi&ecirc;n ngập trong dầu n&oacute;ng 170 độ C khoảng 5 - 7 ph&uacute;t Thưởng thức k&egrave;m nước chấm theo sở th&iacute;ch</p>\r\n	</li>\r\n	<li>Bảo quản&nbsp;\r\n	<p>Bảo quản trong bao k&iacute;n, nơi kh&ocirc; r&aacute;o, tho&aacute;ng m&aacute;t</p>\r\n	</li>\r\n	<li>Thương hiệu&nbsp;\r\n	<p>Cầu Tre ()</p>\r\n	</li>\r\n	<li>Nơi sản xuất&nbsp;\r\n	<p>Việt Nam</p>\r\n	</li>\r\n</ul>', 16100, 0, 16100, 1, '2022-05-28 09:45:34', '2022-05-28 09:45:34');
+(30, 8, '2022-05-28-04-45-346291ef3ed07bf.jpg', 'Bánh tráng chả giò', '<p><a href=\"https://www.bachhoaxanh.com/banh-trang-cau-tre\">B&aacute;nh tr&aacute;ng Cầu Tre</a>&nbsp;th&iacute;ch hợp cho những m&oacute;n t&ocirc;m cuốn hoặc chả ram.&nbsp;<a href=\"https://www.bachhoaxanh.com/banh-trang/banh-trang-cha-gio-19cm-cau-tre-goi-280g\">B&aacute;nh tr&aacute;ng chả gi&ograve; 19cm Cầu Tre g&oacute;i 280g</a>&nbsp;khi cuốn kh&ocirc;ng bị r&aacute;ch, khi chi&ecirc;n l&ecirc;n c&oacute; độ dai d&ograve;n nhất định.&nbsp;<a href=\"https://www.bachhoaxanh.com/banh-trang\">B&aacute;nh tr&aacute;ng</a>&nbsp;th&iacute;ch hợp để chế biến c&aacute;c m&oacute;n ăn vặt hoặc những dịp lễ, đ&aacute;m cho gia đ&igrave;nh.</p>\r\n\r\n<ul>\r\n	<li>T&ecirc;n sản phầm&nbsp;\r\n	<p>B&aacute;nh tr&aacute;ng chả gi&ograve;</p>\r\n	</li>\r\n	<li>Th&agrave;nh phần&nbsp;\r\n	<p>Gạo, bột năng, muối, đường, dầu cọ</p>\r\n	</li>\r\n	<li>Khối lượng&nbsp;\r\n	<p>280g</p>\r\n	</li>\r\n	<li>K&iacute;ch thước&nbsp;\r\n	<p>19cm</p>\r\n	</li>\r\n	<li>C&aacute;ch d&ugrave;ng&nbsp;\r\n	<p>Thoa đều nước l&ecirc;n một mặt b&aacute;nh chờ trong 10 - 15 gi&acirc;y cho b&aacute;nh mềm Đặt phần nh&acirc;n chả gi&ograve; v&agrave;o b&aacute;nh tr&aacute;ng Gấp một đầu v&agrave; hai b&ecirc;n của b&aacute;nh tr&aacute;ng lại Cuộn tr&ograve;n cho hết miếng b&aacute;nh Chi&ecirc;n ngập trong dầu n&oacute;ng 170 độ C khoảng 5 - 7 ph&uacute;t Thưởng thức k&egrave;m nước chấm theo sở th&iacute;ch</p>\r\n	</li>\r\n	<li>Bảo quản&nbsp;\r\n	<p>Bảo quản trong bao k&iacute;n, nơi kh&ocirc; r&aacute;o, tho&aacute;ng m&aacute;t</p>\r\n	</li>\r\n	<li>Thương hiệu&nbsp;\r\n	<p>Cầu Tre ()</p>\r\n	</li>\r\n	<li>Nơi sản xuất&nbsp;\r\n	<p>Việt Nam</p>\r\n	</li>\r\n</ul>', 16100, 0, 16100, 1, '2022-05-28 09:45:34', '2022-05-28 09:45:34'),
+(31, 6, '2022-06-03-03-41-176299c92d0b1cd.jpg', 'Gạo bông sen', '<p>M&ocirc; t&aacute; sản ph&acirc;m</p>', 100000, 0, 100000, 1, '2022-06-03 08:41:17', '2022-06-03 08:41:17');
 
 -- --------------------------------------------------------
 
@@ -269,7 +285,7 @@ CREATE TABLE `product_sizes` (
 --
 
 INSERT INTO `product_sizes` (`id`, `product_id`, `size_id`, `quantity`, `created_at`, `updated_at`) VALUES
-(1, 13, 4, 8, '2021-12-09 04:57:09', '2022-05-28 09:57:19'),
+(1, 13, 4, 7, '2021-12-09 04:57:09', '2022-06-10 02:27:01'),
 (9, 14, 5, 5, '2022-05-28 09:12:27', '2022-05-28 09:12:27'),
 (10, 15, 1, 5, '2022-05-28 09:12:49', '2022-05-28 09:12:49'),
 (11, 16, 5, 5, '2022-05-28 09:19:18', '2022-05-28 09:19:18'),
@@ -278,14 +294,16 @@ INSERT INTO `product_sizes` (`id`, `product_id`, `size_id`, `quantity`, `created
 (14, 19, 1, 10, '2022-05-28 09:24:46', '2022-05-28 09:24:46'),
 (15, 20, 1, 0, '2022-05-28 09:26:39', '2022-05-28 09:26:39'),
 (16, 21, 1, 10, '2022-05-28 09:28:02', '2022-05-28 09:28:02'),
-(17, 22, 1, 5, '2022-05-28 09:29:36', '2022-05-28 09:29:36'),
-(18, 23, 2, 10, '2022-05-28 09:32:51', '2022-05-28 09:32:51'),
-(19, 24, 1, 10, '2022-05-28 09:34:16', '2022-05-28 09:34:16'),
-(20, 25, 1, 10, '2022-05-28 09:38:11', '2022-05-28 09:38:11'),
-(21, 26, 3, 10, '2022-05-28 09:39:41', '2022-05-28 09:39:41'),
-(22, 27, 3, 10, '2022-05-28 09:40:42', '2022-05-28 09:40:42'),
-(23, 28, 1, 19, '2022-05-28 09:43:09', '2022-05-28 09:43:09'),
-(24, 29, 1, 10, '2022-05-28 09:44:29', '2022-05-28 09:44:29');
+(17, 22, 1, 2, '2022-05-28 09:29:36', '2022-06-10 02:30:40'),
+(18, 23, 2, 9, '2022-05-28 09:32:51', '2022-05-28 15:48:09'),
+(19, 24, 1, 9, '2022-05-28 09:34:16', '2022-05-28 15:14:42'),
+(20, 25, 1, 9, '2022-05-28 09:38:11', '2022-06-10 02:27:01'),
+(21, 26, 3, 9, '2022-05-28 09:39:41', '2022-06-10 02:18:24'),
+(22, 27, 3, 8, '2022-05-28 09:40:42', '2022-06-10 02:18:24'),
+(23, 28, 1, 18, '2022-05-28 09:43:09', '2022-06-10 02:29:45'),
+(24, 29, 1, 8, '2022-05-28 09:44:29', '2022-05-28 15:17:51'),
+(25, 30, 1, 5, '2022-05-28 14:48:14', '2022-05-28 14:48:14'),
+(26, 31, 5, 100, '2022-06-03 08:41:54', '2022-06-03 08:41:54');
 
 -- --------------------------------------------------------
 
@@ -339,10 +357,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `address`, `remember_token`, `created_at`, `updated_at`) VALUES
 (6, 0, 'Nguyễn Tiến Thành', 'admin@gmail.com', NULL, '$2y$10$z7CyGiTCtzWqfY2kiCyFgOj9JU.j60iT65FD3aKhUcvixmtklNXqu', '0334736187', 'Trần Phú, Hà Đông', NULL, '2021-11-28 05:02:16', '2021-11-28 05:02:16'),
-(7, 1, 'Nguyễn Tiến Thành', 'nguyentienthanh9291@gmail.com', NULL, '$2y$10$z7CyGiTCtzWqfY2kiCyFgOj9JU.j60iT65FD3aKhUcvixmtklNXqu', '0334736188', 'Trần Phú, Hà Đông', NULL, '2021-11-28 13:18:15', '2021-11-29 16:39:05'),
+(7, 2, 'Nguyễn Tiến Thành', 'nguyentienthanh9291@gmail.com', NULL, '$2y$10$z7CyGiTCtzWqfY2kiCyFgOj9JU.j60iT65FD3aKhUcvixmtklNXqu', '0334736188', 'Trần Phú, Hà Đông', NULL, '2021-11-28 13:18:15', '2021-11-29 16:39:05'),
 (15, 1, 'unicostreel', 'unicosteelco@gmail.com', NULL, '$2y$10$9JeuecovitLioOqEXCBy7OmfD5jcopPTGcLswp2GHPll2giHg.w3y', '0904123459', 'Số 1137 Đê La Thành, phường Ngọc Khánh, Ba Đình, Hà Nội', NULL, '2021-12-07 09:06:00', '2021-12-07 09:06:00'),
 (19, 1, 'unicostreel', 'nguyentienthanh9291server@gmail.com', NULL, '$2y$10$IZ1/WTby3sP6X1RV7a85n.Yvup9vX4Ui9nCzB/S3wNnmS8tmpdY.G', '0904123453', 'Số 1137 Đê La Thành, phường Ngọc Khánh, Ba Đình, Hà Nội', NULL, '2021-12-07 11:27:10', '2021-12-19 09:23:45'),
-(23, 1, 'Thành', 'nguyentienthanh9291server1@gmail.com', NULL, '$2y$10$IS5iZclr21jfLauj60YC9.y2jN2IWyPQetBezuNII9rCPWRGqq8eO', '0334736184', 'Hà Đông', NULL, '2021-12-07 16:44:14', '2021-12-19 11:28:45');
+(23, 2, 'Thành', 'nguyentienthanh9291server1@gmail.com', NULL, '$2y$10$IS5iZclr21jfLauj60YC9.y2jN2IWyPQetBezuNII9rCPWRGqq8eO', '0334736184', 'Hà Đông', NULL, '2021-12-07 16:44:14', '2021-12-19 11:28:45'),
+(25, 1, 'Lê Thị Thùy Linh', 'letuananht9583002@gmail.com', NULL, '$2y$10$ZCdoNbspq.0vOM2BORpUFexvteze.e6GTE17W2eJg.Mb9g7BpkQly', '0372573864', 'Thanh Trì, Hà Nội', NULL, '2022-05-28 15:17:10', '2022-05-28 15:17:10');
 
 --
 -- Indexes for dumped tables
@@ -457,13 +476,13 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -475,13 +494,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `product_sizes`
 --
 ALTER TABLE `product_sizes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `sizes`
@@ -493,7 +512,7 @@ ALTER TABLE `sizes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

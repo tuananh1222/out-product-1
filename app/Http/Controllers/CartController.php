@@ -169,6 +169,13 @@ class CartController extends Controller
         $pageNameRoot = 'Tiến hành đặt hàng';
 		$cart = session()->get('cart');
         $total = 0;
+        $total_order = 0;
+        if (!empty($cart)) {
+            foreach ($cart as $item) {
+                $total += $item['total'];
+                $total_order++;
+            }
+        }
         $title = "Checkout";
         if (empty($cart)) {
             return redirect()->route('home')->with('message', 'Hãy thêm sản phẩm vào giỏ');
@@ -182,7 +189,8 @@ class CartController extends Controller
             'pageNameRoot',
             'cart',
             'total',
-            'title'
+            'title',
+            'total_order'
         ]));
     }
 
@@ -192,8 +200,16 @@ class CartController extends Controller
         
         try {
             $data = $request->all();
+           
             $mail = [];
             $cart = session()->get('cart');
+            // $total_order = 0;
+            // if (!empty($cart)) {
+            //     foreach ($cart as $item) {
+            //         $total += $item['total'];
+            //         $total_order++;
+            //     }
+            // }
            if (!Auth::check()) {
                 $user = User::where('email', $data['email'])
                     ->orWhere('phone', $data['phone'])
@@ -210,11 +226,11 @@ class CartController extends Controller
             } else {
                 $user = Auth::user();
             }
-
+          
             $data['user_id'] = $user->id;
             
             $order = Order::create($data);
-          
+       
             foreach ($cart as $item) {
                 OrderDetail::create([
                     'order_id' => $order->id,
@@ -246,7 +262,7 @@ class CartController extends Controller
                     }
                 }
             }
- 
+          
             session()->pull('cart', $cart);
             session()->save();
 
@@ -255,7 +271,7 @@ class CartController extends Controller
             $mail['phone'] = $user->phone;
             $mail['address'] = $user->address;
             
-            Mail::to($mail['email'])->send(new OrderMail($mail));
+            //Mail::to($mail['email'])->send(new OrderMail($mail));
 
             DB::commit();
            

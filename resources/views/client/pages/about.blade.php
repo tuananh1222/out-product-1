@@ -65,7 +65,7 @@
 <!-- end featured section -->
 
 <!-- shop banner -->
-<section class="shop-banner">
+<section class="shop-banzxcner">
     <div class="container">
         <h3>Vào mùa hè tới này <br> cơ hội giảm giá <span class="orange-text">lớn...</span></h3>
         <div class="sale-percent"><span>Giảm <br> tới</span>50% <span>mỗi sản phẩm</span></div>
